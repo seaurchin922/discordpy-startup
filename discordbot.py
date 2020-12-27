@@ -109,7 +109,7 @@ async def on_ready():
     # 状態を '☆ピコピコプラネット☆を視聴中' にする
     activity = discord.Activity(name='☆ピコピコプラネット☆', type=discord.ActivityType.watching)
     await client.change_presence(activity=activity)
-    #update_border.start()
+    update_border.start()
 
 @client.event
 async def on_message(message):
