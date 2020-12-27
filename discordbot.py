@@ -13,7 +13,7 @@ client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
 shiuntench = client.get_channel(776432703964708865) 
-bdrbotch = client.get_channel(786021632522846269) # ボーダーbotチャンネルのID
+bdrbotch = client.get_channel(786021632522846269) # ボーダーbotチャンネルのID.
 botlogch = client.get_channel(790298428957261855)
 
 errorimg_url = 'https://millionlive.info/?plugin=attach&refer=%E5%A4%A7%E7%A5%9E%E7%92%B0&openfile=05.png'
