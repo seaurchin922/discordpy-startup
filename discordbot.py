@@ -30,7 +30,7 @@ async def on_message(message):
     
     # 「/neko」と発言したら「にゃーん」が返る処理
     if message.content == '/neko':
-        await message.channel.send('にゃ～ん')
+        await message.channel.send('にゃーん')
     
     if message.content.startswith('!pbdr'): #書き方汚いので整える
         try:
