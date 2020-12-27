@@ -12,6 +12,10 @@ client = discord.Client()
 
 token = os.environ['DISCORD_BOT_TOKEN']
 
+shiuntench = client.get_channel(776432703964708865) 
+bdrbotch = client.get_channel(786021632522846269) # ボーダーbotチャンネルのID
+botlogch = client.get_channel(790298428957261855)
+
 errorimg_url = 'https://millionlive.info/?plugin=attach&refer=%E5%A4%A7%E7%A5%9E%E7%92%B0&openfile=05.png'
 
 idolId_to_idolName = {
@@ -93,10 +97,6 @@ def maxDgtOfList(l):
 
 @tasks.loop(seconds=60)
 async def update_border(): # 自動ボーダー送信機能
-    shiuntench = client.get_channel(776432703964708865) 
-    bdrbotch = client.get_channel(786021632522846269) # ボーダーbotチャンネルのID
-    botlogch = client.get_channel(790298428957261855)
-
     nowTime = datetime.datetime.now() # 現在時刻の取得
     # !!! ↑ debug ↓ !!!
     #nowTime = datetime.datetime(2020, 10, 3, 20, 36) # Persona Voice開始30分後
