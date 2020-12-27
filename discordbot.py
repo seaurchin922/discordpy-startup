@@ -95,14 +95,6 @@ def maxDgtOfList(l):
     l_str = [str(n) for n in l]
     return max(map(len, l_str))
 
-@tasks.loop(seconds=60)
-async def update_border(): # 自動ボーダー送信機能
-    nowTime = datetime.datetime.now() # 現在時刻の取得
-    # !!! ↑ debug ↓ !!!
-    #nowTime = datetime.datetime(2020, 10, 3, 20, 36) # Persona Voice開始30分後
-    # イベ開始一時間後から30分起きの時刻を設定する
-    await botlogch.send('looping on ' + nowTime.strftime('%m/%d %H:%M:%S')) # ループ中であることを端末に出力
-
 
 @client.event
 async def on_ready():
