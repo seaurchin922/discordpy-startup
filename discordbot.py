@@ -97,6 +97,12 @@ def maxDgtOfList(l):
     return max(map(len, l_str))
 
 
+@tasks.loop(seconds=60)
+async def update_border(): # 自動ボーダー送信機能
+    nowTime = datetime.datetime.now() # 現在時刻の取得
+    await botlogch.send('looping on ' + nowTime.strftime('%m/%d %H:%M:%S')) # ループ中であることを端末に出力
+
+
 @client.event
 async def on_ready():
     # 起動したらターミナルにログイン通知が表示される
