@@ -12,10 +12,6 @@ import traceback
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
-shiuntench = client.get_channel(776432703964708865) 
-bdrbotch = client.get_channel(786021632522846269)
-botlogch = client.get_channel(790298428957261855)
-
 idolId_to_idolName = {
     "1": "天海春香",
     "2": "如月千早",
@@ -96,17 +92,39 @@ def maxDgtOfList(l):
     l_str = [str(n) for n in l]
     return max(map(len, l_str))
 
+@tasks.loop(seconds=60)
+async def update_border(): # 自動ボーダー送信機能
+
+    shiuntench = client.get_channel(776432703964708865) 
+    bdrbotch = client.get_channel(786021632522846269)
+    botlogch = client.get_channel(790298428957261855)
+    
+    nowTime = datetime.datetime.now() # 現在時刻の取得
+    # !!! ↑ debug ↓ !!!
+    #nowTime = datetime.datetime(2020, 10, 3, 20, 36) # Persona Voice開始30分後
+    # イベ開始一時間後から30分起きの時刻を設定する
+
+    await botlogch.send('looping on ' + nowTime.strftime('%m/%d %H:%M:%S')) # ループ中であることを端末に出力
+
+
 
 @client.event
 async def on_ready():
+    botlogch = client.get_channel(790298428957261855)
+    
     # 起動したらターミナルにログイン通知が表示される
-    # await botlogch.send('ログインしました')
+    await botlogch.send('ログインしました')
     # 状態を '☆ピコピコプラネット☆を視聴中' にする
     activity = discord.Activity(name='☆ピコピコプラネット☆', type=discord.ActivityType.watching)
     await client.change_presence(activity=activity)
+    
+    update_border.start()
 
 @client.event
 async def on_message(message):
+    shiuntench = client.get_channel(776432703964708865) 
+    botlogch = client.get_channel(790298428957261855)
+    
     if message.author.bot:
         return
     
