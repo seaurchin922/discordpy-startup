@@ -97,12 +97,6 @@ def maxDgtOfList(l):
     return max(map(len, l_str))
 
 
-@tasks.loop(seconds=60)
-async def looptest():
-    nowTime = datetime.datetime.now() # 現在時刻の取得
-    await botlogch.send('looping on ' + nowTime.strftime('%m/%d %H:%M:%S')) # ループ中であることを端末に出力
-
-
 @client.event
 async def on_ready():
     # 起動したらターミナルにログイン通知が表示される
@@ -116,13 +110,9 @@ async def on_message(message):
     if message.author.bot:
         return
     
-    if message.content.startswith('!nowtime'):
+    if message.content.startswith('!nt'):
         nowTime = datetime.datetime.now()
-        await　shiuntench.send('今は ' + nowTime.strftime('%m月%d日 %H時%M分%S秒') + ' です')
-        
-    if message.content.startswith('!loop'):
-        await message.channel.send('ループテスト開始')
-        looptest.start()
+        await　message.channel.send('今は ' + nowTime.strftime('%m月%d日 %H時%M分%S秒') + ' です')
 
     if message.content.startswith('!pbdr'): #書き方汚いので整える
         try:
