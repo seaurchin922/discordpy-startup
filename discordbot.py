@@ -99,7 +99,7 @@ def maxDgtOfList(l):
 @client.event
 async def on_ready():
     # 起動したらターミナルにログイン通知が表示される
-    await botlogch.send('ログインしました')
+    # await botlogch.send('ログインしました')
     # 状態を '☆ピコピコプラネット☆を視聴中' にする
     activity = discord.Activity(name='☆ピコピコプラネット☆', type=discord.ActivityType.watching)
     await client.change_presence(activity=activity)
