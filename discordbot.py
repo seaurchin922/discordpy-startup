@@ -118,7 +118,7 @@ async def on_message(message):
     
     if message.content.startswith('!nowtime'):
         nowTime = datetime.datetime.now()
-        await message.channel.send('今は ' + nowTime.strftime('%m月%d日 %H時%M分%S秒') + ' です')
+        await　shiuntench.send('今は ' + nowTime.strftime('%m月%d日 %H時%M分%S秒') + ' です')
         
     if message.content.startswith('!loop'):
         await message.channel.send('ループテスト開始')
