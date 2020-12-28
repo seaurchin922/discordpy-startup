@@ -96,6 +96,7 @@ def maxDgtOfList(l):
     l_str = [str(n) for n in l]
     return max(map(len, l_str))
 
+
 @client.event
 async def on_ready():
     # 起動したらターミナルにログイン通知が表示される
@@ -108,6 +109,9 @@ async def on_ready():
 async def on_message(message):
     if message.author.bot:
         return
+    
+    if message.content.startswith('!nowtime'):
+        await message.channel.send('今は9:15です')
 
     if message.content.startswith('!pbdr'): #書き方汚いので整える
         try:
