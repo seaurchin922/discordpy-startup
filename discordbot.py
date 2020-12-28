@@ -111,7 +111,7 @@ async def on_message(message):
         return
     
     if message.content.startswith('!nowtime'):
-        await message.channel.send('今は9:15です')
+        await message.channel.send('今は{}です'.format(str(datetime.datetime.now)))
 
     if message.content.startswith('!pbdr'): #書き方汚いので整える
         try:
